@@ -50,15 +50,16 @@
     border-bottom: 1px solid rgba(200,148,26,0.15);
   }
   .nav-logo {
-    display: flex; align-items: center; gap: 10px;
+    display: flex; align-items: center; gap: 12px;
     text-decoration: none;
   }
-  .nav-logo svg { width: 32px; height: 32px; }
+  .nav-logo svg { width: 52px; height: 52px; }
   .nav-logo span {
     font-family: 'Playfair Display', serif;
-    font-size: 1.3rem; font-weight: 700;
+    font-size: 1.55rem; font-weight: 900;
     color: var(--gold-light);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
+    text-shadow: 0 0 20px rgba(200,148,26,0.4);
   }
   .nav-links {
     display: flex; gap: 36px; list-style: none;
@@ -118,6 +119,12 @@
     background: radial-gradient(ellipse at 60% 40%, rgba(160,104,14,0.18) 0%, transparent 60%),
                 radial-gradient(ellipse at 20% 80%, rgba(200,148,26,0.1) 0%, transparent 50%),
                 var(--black);
+  }
+  .hero-bee-img {
+    position: absolute; right: -60px; bottom: 0;
+    width: min(520px, 60vw); opacity: 0.07;
+    pointer-events: none;
+    filter: sepia(1) saturate(2) hue-rotate(10deg);
   }
   .honeycomb-bg {
     position: absolute; inset: 0;
@@ -276,15 +283,18 @@
   }
   .product-card:hover::before { opacity: 1; }
   .product-visual {
-    width: 120px; height: 120px; margin: 0 auto 28px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #F5D98A, #C8941A 50%, #6B4010);
-    box-shadow: 0 0 40px rgba(200,148,26,0.3), inset 0 -10px 20px rgba(0,0,0,0.3);
+    width: 100%; height: 220px; margin: 0 auto 28px;
+    border-radius: 4px; overflow: hidden;
     position: relative;
+    box-shadow: 0 0 40px rgba(200,148,26,0.15);
   }
-  .product-visual::after {
-    content: '🍯'; position: absolute;
-    bottom: -6px; right: -6px; font-size: 1.8rem;
+  .product-visual img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .product-card:hover .product-visual img {
+    transform: scale(1.05);
   }
   .product-card h3 {
     font-family: 'Playfair Display', serif;
@@ -638,10 +648,32 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo">
-    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16 2L29 9.5V22.5L16 30L3 22.5V9.5L16 2Z" stroke="#C8941A" stroke-width="1.5"/>
-      <path d="M16 8L24 12.5V21.5L16 26L8 21.5V12.5L16 8Z" fill="rgba(200,148,26,0.15)" stroke="#C8941A" stroke-width="1"/>
-      <circle cx="16" cy="17" r="3" fill="#C8941A"/>
+    <svg viewBox="0 0 200 200" width="38" height="38" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="nlg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#F5D98A"/>
+          <stop offset="50%" stop-color="#C8941A"/>
+          <stop offset="100%" stop-color="#9A6A10"/>
+        </linearGradient>
+      </defs>
+      <circle cx="100" cy="100" r="97" fill="#0D0A06" stroke="url(#nlg)" stroke-width="2"/>
+      <polygon points="100,38 150,66 150,122 100,150 50,122 50,66" fill="#0D0A06" stroke="url(#nlg)" stroke-width="2.5"/>
+      <ellipse cx="82" cy="82" rx="16" ry="7" fill="rgba(200,148,26,0.22)" stroke="#C8941A" stroke-width="1" transform="rotate(-35 82 82)"/>
+      <ellipse cx="118" cy="82" rx="16" ry="7" fill="rgba(200,148,26,0.22)" stroke="#C8941A" stroke-width="1" transform="rotate(35 118 82)"/>
+      <ellipse cx="84" cy="96" rx="11" ry="5" fill="rgba(200,148,26,0.12)" stroke="rgba(200,148,26,0.5)" stroke-width="0.8" transform="rotate(-20 84 96)"/>
+      <ellipse cx="116" cy="96" rx="11" ry="5" fill="rgba(200,148,26,0.12)" stroke="rgba(200,148,26,0.5)" stroke-width="0.8" transform="rotate(20 116 96)"/>
+      <circle cx="100" cy="70" r="8" fill="url(#nlg)"/>
+      <line x1="95" y1="64" x2="87" y2="54" stroke="#E8B84B" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="86" cy="53" r="2" fill="#E8B84B"/>
+      <line x1="105" y1="64" x2="113" y2="54" stroke="#E8B84B" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="114" cy="53" r="2" fill="#E8B84B"/>
+      <ellipse cx="100" cy="85" rx="8" ry="7" fill="#C8941A"/>
+      <ellipse cx="100" cy="103" rx="8" ry="13" fill="#C8941A"/>
+      <path d="M92,97 Q100,95 108,97 L108,101 Q100,103 92,101Z" fill="#0D0A06" opacity="0.75"/>
+      <path d="M92,104 Q100,102 108,104 L108,108 Q100,110 92,108Z" fill="#0D0A06" opacity="0.75"/>
+      <path d="M92,111 Q100,109 108,111 L108,114 Q100,116 92,114Z" fill="#0D0A06" opacity="0.65"/>
+      <path d="M96,115 L100,124 L104,115 Q100,112 96,115Z" fill="#C8941A"/>
+      <path d="M100,148 C99,152 97,158 98,162 C99,165 101,165 102,162 C103,158 101,152 100,148Z" fill="url(#nlg)"/>
     </svg>
     <span>Betey Honey</span>
   </a>
@@ -712,7 +744,27 @@
     <div class="products-grid">
 
       <div class="product-card reveal">
-        <div class="product-visual"></div>
+        <div class="product-visual" style="background:radial-gradient(ellipse at 30% 25%, #5C2E06, #1A0A02 65%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2270%22%3E%3Cpath d=%22M20 46L0 35V13L20 2l20 11v22L20 46zm0-4l15-8.7V15.7L20 7 5 15.7v17.6L20 42z%22 fill=%22%23F5D98A%22/%3E%3C/svg%3E');background-size:40px 70px;opacity:0.07;"></div>
+          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:50px;height:10px;background:linear-gradient(to bottom,#F5D98A,#C8941A);border-radius:0 0 25px 25px;"></div>
+          <svg viewBox="0 0 120 160" width="100" height="138" style="position:relative;z-index:2;filter:drop-shadow(0 10px 28px rgba(200,148,26,0.45));" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="p1a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6B3A08"/><stop offset="50%" stop-color="#3D1E04"/><stop offset="100%" stop-color="#1E0E02"/></linearGradient>
+              <linearGradient id="p1b" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(245,217,138,0.22)"/><stop offset="100%" stop-color="rgba(0,0,0,0.1)"/></linearGradient>
+              <linearGradient id="p1lid" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#E8B84B"/><stop offset="100%" stop-color="#9A6808"/></linearGradient>
+            </defs>
+            <rect x="28" y="6" width="64" height="16" rx="4" fill="url(#p1lid)"/>
+            <rect x="24" y="19" width="72" height="7" rx="3" fill="#7A5008"/>
+            <path d="M24,26 Q16,28 14,36 L8,136 Q8,148 20,150 L100,150 Q112,148 112,136 L106,36 Q104,28 96,26 Z" fill="url(#p1a)"/>
+            <path d="M24,26 Q16,28 14,36 L8,136 Q8,148 20,150 L100,150 Q112,148 112,136 L106,36 Q104,28 96,26 Z" fill="url(#p1b)"/>
+            <path d="M20,72 L13,136 Q13,146 22,146 L98,146 Q107,146 107,136 L100,72 Z" fill="#4A2204" opacity="0.65"/>
+            <path d="M26,30 L17,128" stroke="rgba(245,217,138,0.1)" stroke-width="9" stroke-linecap="round"/>
+            <rect x="22" y="90" width="76" height="40" rx="3" fill="rgba(245,217,138,0.09)" stroke="rgba(245,217,138,0.22)" stroke-width="1"/>
+            <text x="60" y="107" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" font-weight="bold" fill="#F5D98A">RAW FOREST</text>
+            <text x="60" y="121" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#C8941A">HONEY • 150cl</text>
+            <ellipse cx="60" cy="148" rx="34" ry="4" fill="rgba(200,148,26,0.12)"/>
+          </svg>
+        </div>
         <p class="product-size">150cl · Large Jar</p>
         <h3>Raw Forest Honey</h3>
         <p>Straight from wild forest hives. Dark, rich, powerfully nutritious.</p>
@@ -721,7 +773,9 @@
       </div>
 
       <div class="product-card reveal">
-        <div class="product-visual"></div>
+        <div class="product-visual">
+          <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=600&q=80" alt="Pure Farm Honey light golden honey jar" loading="lazy">
+        </div>
         <p class="product-size">75cl · Medium Jar</p>
         <h3>Pure Farm Honey</h3>
         <p>Light golden. Mild and sweet. Perfect for everyday use.</p>
@@ -730,11 +784,13 @@
       </div>
 
       <div class="product-card reveal">
-        <div class="product-visual"></div>
+        <div class="product-visual">
+          <img src="https://images.unsplash.com/photo-1471943311424-646960669fbc?w=600&q=80" alt="Comb Honey natural honeycomb wax" loading="lazy">
+        </div>
         <p class="product-size">50cl · Small Jar</p>
         <h3>Comb Honey</h3>
         <p>Honey still in the wax comb. As natural as it gets.</p>
-        <div class="product-price"><sub>₦</sub>7,000</div>
+        <div class="product-price"><sub>₦</sub>8,000</div>
         <a href="#order" class="btn-order">Order Now</a>
       </div>
 
@@ -814,10 +870,7 @@
     <div class="farmer-inner">
       <div class="farmer-photo-wrap reveal">
         <div class="farmer-photo">
-          <div class="farmer-photo-placeholder">
-            <span>👨🏾‍🌾</span>
-            <span>Bethel Okonji</span>
-          </div>
+          <img id="farmerImg" src="https://images.unsplash.com/photo-1595073752435-e05b9a0adc2c?w=600&q=80" alt="Bethel Okonji — Betey Honey Farmer" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
         <div class="farmer-deco">🍯</div>
       </div>
@@ -923,7 +976,7 @@
                 <option value="">Select product</option>
                 <option>Raw Forest Honey (150cl) — ₦26,000</option>
                 <option>Pure Farm Honey (75cl) — ₦14,000</option>
-                <option>Comb Honey (50cl) — ₦7,000</option>
+                <option>Comb Honey (50cl) — ₦8,000</option>
               </select>
             </div>
             <div class="form-group">
@@ -950,10 +1003,29 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="#hero" class="nav-logo">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
-          <path d="M16 2L29 9.5V22.5L16 30L3 22.5V9.5L16 2Z" stroke="#C8941A" stroke-width="1.5"/>
-          <path d="M16 8L24 12.5V21.5L16 26L8 21.5V12.5L16 8Z" fill="rgba(200,148,26,0.15)" stroke="#C8941A" stroke-width="1"/>
-          <circle cx="16" cy="17" r="3" fill="#C8941A"/>
+        <svg viewBox="0 0 200 200" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="flg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#F5D98A"/>
+              <stop offset="50%" stop-color="#C8941A"/>
+              <stop offset="100%" stop-color="#9A6A10"/>
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="100" r="97" fill="#0D0A06" stroke="url(#flg)" stroke-width="2"/>
+          <polygon points="100,38 150,66 150,122 100,150 50,122 50,66" fill="#0D0A06" stroke="url(#flg)" stroke-width="2.5"/>
+          <ellipse cx="82" cy="82" rx="16" ry="7" fill="rgba(200,148,26,0.22)" stroke="#C8941A" stroke-width="1" transform="rotate(-35 82 82)"/>
+          <ellipse cx="118" cy="82" rx="16" ry="7" fill="rgba(200,148,26,0.22)" stroke="#C8941A" stroke-width="1" transform="rotate(35 118 82)"/>
+          <circle cx="100" cy="70" r="8" fill="url(#flg)"/>
+          <line x1="95" y1="64" x2="87" y2="54" stroke="#E8B84B" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="86" cy="53" r="2" fill="#E8B84B"/>
+          <line x1="105" y1="64" x2="113" y2="54" stroke="#E8B84B" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="114" cy="53" r="2" fill="#E8B84B"/>
+          <ellipse cx="100" cy="85" rx="8" ry="7" fill="#C8941A"/>
+          <ellipse cx="100" cy="103" rx="8" ry="13" fill="#C8941A"/>
+          <path d="M92,97 Q100,95 108,97 L108,101 Q100,103 92,101Z" fill="#0D0A06" opacity="0.75"/>
+          <path d="M92,104 Q100,102 108,104 L108,108 Q100,110 92,108Z" fill="#0D0A06" opacity="0.75"/>
+          <path d="M92,111 Q100,109 108,111 L108,114 Q100,116 92,114Z" fill="#0D0A06" opacity="0.65"/>
+          <path d="M100,148 C99,152 97,158 98,162 C99,165 101,165 102,162 C103,158 101,152 100,148Z" fill="url(#flg)"/>
         </svg>
         <span>Betey Honey</span>
       </a>
